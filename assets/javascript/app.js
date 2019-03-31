@@ -1,50 +1,72 @@
 
+// Array of sea animals
+var topics = ["octopus", "jellyfish", "seahorse", "shark", "dolphin"];
 
-// Retrieves 10 gifs
-// $("button").on("click", function() {
-//     var person = $(this).attr("gif-button");
-//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-//       person + "&api_key=CTIYyaADzGAhNxyC7wuygpfs2KvTq4MN&limit=10";
 
-//     $.ajax({
-//       url: queryURL,
-//       method: "GET"
-//     })
-//       .then(function(response) {
-//         console.log(response);
-        
-//         var results = response.data;
+function createButton() {
 
-//         for (var i = 0; i < results.length; i++) {
-//           var gifDiv = $("<div>");
+  $("#buttons").empty();
+  // Loop that cycles through the array and creates buttons
+  for (var i = 0; i < topics.length; i++) {
 
-//           var rating = results[i].rating;
+    var buttonGen = $('<button>');
+    buttonGen.addClass('topics');
 
-//           var p = $("<p>").text("Rating: " + rating);
+    buttonGen.attr('gif-button', topics[i]);
+    buttonGen.text(topics[i]);
+    $('#buttons').append(buttonGen);
+  };
+};
 
-//           var personImage = $("<img>");
-//           personImage.attr("src", results[i].images.fixed_height.url);
+// Creates the new button
+$('#addSea').on('click', function(event) {
 
-//           gifDiv.prepend(p);
-//           gifDiv.prepend(personImage);
+  event.preventDefault();
 
-//           $("#gifDump").prepend(gifDiv);
-//         }
-//       });
-//   });
+  var seaCreature = $('#seaInput').val().trim();
 
-  $('button').on('click', function () {
-    var thing = $(this).attr('gif-button');
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+  // Pushes the value to the 'topics' array
+  topics.push(seaCreature);
+
+  createButton();
+});
+
+createButton();
+
+
+// Event handler that retrieves 10 gifs
+$('button').on('click', function () {
+  // Varible
+  var thing = $(this).attr('gif-button');
+  // Varible for the API query
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     thing + "&api_key=CTIYyaADzGAhNxyC7wuygpfs2KvTq4MN&limit=10";
 
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-    .then(function(response) {
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+    .then(function (response) {
       console.log(response);
-      
-    })
 
-  });
+      var result = response.data;
+      // console.log(result);
+
+      for (var i = 0; i < result.length; i++) {
+        var gifDiv = $('<div>');
+
+        var rating = result[i].rating;
+        console.log(rating);
+
+        var p = $('<p>').text('Rating: ' + rating);
+
+        var gifImage = $('<img>');
+        gifImage.attr('src', result[i].images.fixed_height.url);
+
+        gifDiv.prepend(p);
+        gifDiv.prepend(gifImage);
+
+        $('#gifDump').prepend(gifDiv);
+      }
+    });
+});
