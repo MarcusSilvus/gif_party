@@ -5,6 +5,7 @@ var topics = ["octopus", "jellyfish", "seahorse", "shark", "dolphin"];
 
 function createButton() {
 
+  // Prevents duplicate buttons being created when adds a new button
   $("#buttons").empty();
   // Loop that cycles through the array and creates buttons
   for (var i = 0; i < topics.length; i++) {
@@ -14,12 +15,13 @@ function createButton() {
 
     buttonGen.attr('gif-button', topics[i]);
     buttonGen.text(topics[i]);
+
     $('#buttons').append(buttonGen);
   };
 };
 
 // Creates the new button
-$('#addSea').on('click', function(event) {
+$('#addSea').on('click', function (event) {
 
   event.preventDefault();
 
@@ -31,11 +33,12 @@ $('#addSea').on('click', function(event) {
   createButton();
 });
 
-createButton();
+
 
 
 // Event handler that retrieves 10 gifs
-$('button').on('click', function () {
+//$('button').on('click', 
+function gifParty() {
   // Varible
   var thing = $(this).attr('gif-button');
   // Varible for the API query
@@ -69,4 +72,9 @@ $('button').on('click', function () {
         $('#gifDump').prepend(gifDiv);
       }
     });
-});
+};
+
+ $(document).on('click', '.topics', gifParty);
+
+ createButton();
+
