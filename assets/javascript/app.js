@@ -37,7 +37,6 @@ $('#addSea').on('click', function (event) {
 
 
 // Event handler that retrieves 10 gifs
-//$('button').on('click', 
 function gifParty() {
   // Varible
   var thing = $(this).attr('gif-button');
@@ -64,17 +63,41 @@ function gifParty() {
         var p = $('<p>').text('Rating: ' + rating);
 
         var gifImage = $('<img>');
-        gifImage.attr('src', result[i].images.fixed_height.url);
+        var gifImageStill = result[i].images.fixed_height_still.url;
+        var gifImageAnimate = result[i].images.fixed_height.url;
+
+        gifImage.attr('src', result[i].images.fixed_height_still.url);
+        gifImage.addClass('gif');
+        gifImage.attr('gif-still', gifImageStill);
+        gifImage.attr('gif-animate', gifImageAnimate);
+        gifImage.attr('gif-state', 'still');
+
 
         gifDiv.prepend(p);
         gifDiv.prepend(gifImage);
 
         $('#gifDump').prepend(gifDiv);
-      }
+      };
+
+      //Pause and play feature
+      $(".gif").on("click", function () {
+
+        var state = $(this).attr('gif-state');
+
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("gif-animate"));
+          $(this).attr('gif-state', 'animate');
+        }
+        else if (state === "animate") {
+          $(this).attr("src", $(this).attr("gif-still"));
+          $(this).attr('gif-state', 'still');
+        }
+      });
     });
 };
 
- $(document).on('click', '.topics', gifParty);
 
- createButton();
+$(document).on('click', '.topics', gifParty);
+
+createButton();
 
