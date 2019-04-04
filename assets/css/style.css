@@ -1,3 +1,7 @@
+body {
+    background-color: lightskyblue;
+}
+
 .topics {
     margin: 10px;
 }
@@ -12,12 +16,31 @@
     flex-wrap: wrap;
 }
 
-h1, h2, .title {
+h1, h3, .title {
     text-align: center;
 }
 
+h3 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+#addSea {
+    font-family: 'Permanent Marker', cursive;
+    margin-bottom: 20px;
+}
+
+.title, label {
+    font-size: 18px;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+
+
 .jumbotron {
     padding: 1rem 2rem;
+    /* background-color: lightblue; */
+    background-image: linear-gradient(lightblue, lightskyblue)
+    ;
 }
 
 /* .container {
@@ -27,6 +50,5 @@ h1, h2, .title {
 } */
 
 h1 {
-    font-size: 48px;
     font-family: 'Bangers', cursive;
 }
