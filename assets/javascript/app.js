@@ -11,7 +11,7 @@ function createButton() {
   for (var i = 0; i < topics.length; i++) {
 
     var buttonGen = $('<button>');
-    buttonGen.addClass('topics');
+    buttonGen.addClass('topics btn btn-primary');
 
     buttonGen.attr('gif-button', topics[i]);
     buttonGen.text(topics[i]);
@@ -32,9 +32,6 @@ $('#addSea').on('click', function (event) {
 
   createButton();
 });
-
-
-
 
 // Event handler that retrieves 10 gifs
 function gifParty() {
