@@ -25,3 +25,8 @@ h1, h2, .title {
     border-width: 1px;
     border-color: black;
 } */
+
+h1 {
+    font-size: 48px;
+    font-family: 'Bangers', cursive;
+}
