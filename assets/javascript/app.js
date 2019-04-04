@@ -1,6 +1,6 @@
 
 // Array of sea animals
-var topics = ["octopus", "jellyfish", "seahorse", "shark", "dolphin"];
+var topics = ["octopus", "jellyfish", "seahorse", "shark", "dolphin","blue whale","starfish","angler fish","moray eel"];
 
 
 function createButton() {

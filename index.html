@@ -19,7 +19,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div id="buttons"></div>
+                <div class="jumbotron">
+                    <h1 class="display-4">Gif Generator!</h1>
+                    <h2>Seaweed Addition!</h2>
+                </div>
             </div>
         </div>
     </div>
@@ -27,19 +30,32 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form id="seaForm">
-                    <label for="seaInput">What's your favorite sea creature?</label>
-                    <input type="text" id="seaInput">
+                <div id="buttons"></div>
             </div>
         </div>
     </div>
 
-    <!-- Button triggers new sea creature button to be added -->
-    <input id="addSea" type="submit" value="Sploooosh!">
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <form id="seaForm">
+                    <label for="seaInput">What's your favorite sea creature?</label>
+                    <input type="text" id="seaInput">
+                    <!-- Button triggers new sea creature button to be added -->
+                    <input id="addSea" type="submit" value="Sploooosh!">
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <div id="gifDump"></div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex flex-row" id="gifDump"></div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
